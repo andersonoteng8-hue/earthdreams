@@ -1,0 +1,76 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body.dark{background:black;color:white}
+body.light{background:white;color:black}
+
+.sidebar{
+ position:fixed;width:220px;height:100vh;
+ background:#111;padding:20px;
+ box-shadow:0 0 20px white;
+}
+body.light .sidebar{background:#eee;box-shadow:0 0 20px black}
+
+.logo{
+ border:2px solid currentColor;
+ border-radius:50%;
+ padding:20px;
+ text-align:center;
+ margin-bottom:20px;
+ animation:glow 2s infinite alternate;
+}
+
+nav a{
+ display:block;color:inherit;
+ text-decoration:none;margin:10px 0;
+}
+
+button{
+ width:100%;padding:10px;margin-top:10px;
+ background:transparent;border:1px solid currentColor;
+ color:inherit;cursor:pointer;
+}
+
+.main{margin-left:240px;padding:20px}
+
+.hero{
+ height:360px;border:2px solid currentColor;
+ position:relative;overflow:hidden;
+}
+.hero iframe{width:100%;height:100%}
+
+.hero-text{
+ position:absolute;bottom:20px;left:20px;
+ background:rgba(0,0,0,0.6);padding:15px;
+}
+
+.movies{
+ margin-top:30px;
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:20px;
+}
+.movie{
+ height:150px;border:2px solid currentColor;
+ display:flex;align-items:center;justify-content:center;
+ cursor:pointer;animation:float 3s infinite;
+ transition:.3s;
+}
+.movie:hover{box-shadow:0 0 20px currentColor;transform:scale(1.05)}
+
+.about{margin:50px 0}
+
+footer{
+ border-top:1px solid currentColor;
+ padding:20px;text-align:center;
+}
+.socials a{
+ margin:0 10px;color:inherit;text-decoration:none;
+}
+
+@keyframes glow{
+ from{box-shadow:0 0 5px currentColor}
+ to{box-shadow:0 0 20px currentColor}
+}
+@keyframes float{
+ 0%{transform:translateY(0)}
+ 50%{transform:translateY(-6px)}
+ 100%{transform:translateY(0)}
+}

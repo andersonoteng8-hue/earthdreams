@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Earth Dreams Entertainment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+ margin:0;
+ font-family:system-ui;
+ background:#0b0b0b;
+ color:#fff;
+ overflow-x:hidden;
+}
+.dark{background:#0b0b0b;color:#fff}
+.light{background:#f5f5f5;color:#111}
+
+/* MAIN LOGO */
+.logo-area{
+ position:fixed;
+ top:14px;
+ left:14px;
+ z-index:3000;
+ background:#000;
+ padding:12px 14px;
+ border-radius:999px;
+ display:flex;
+ align-items:center;
+ box-shadow:0 6px 18px rgba(0,0,0,.6);
+}
+.logo-area img{
+ height:60px;
+ width:auto;
+ border-radius:999px;
+}
+
+/* HAMBURGER */
+.menu-btn{
+ position:fixed;
+ top:22px;
+ right:20px;
+ z-index:3000;
+ font-size:26px;
+ background:#111;
+ padding:10px 14px;
+ border-radius:12px;
+ cursor:pointer;
+ display:none;
+}
+
+/* SIDEBAR */
+.sidebar{
+ position:fixed;
+ left:0;top:0;bottom:0;
+ width:220px;
+ background:#111;
+ z-index:2000;
+ transition:transform .35s ease;
+}
+
+/* SECOND LOGO */
+.sidebar-brand{
+ position:absolute;
+ inset:0;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ opacity:.08;
+ pointer-events:none;
+}
+.sidebar-brand img{
+ height:80%;
+}
+
+/* SIDEBAR CONTENT */
+.sidebar-content{
+ position:relative;
+ z-index:10;
+ padding:20px;
+ padding-top:120px;
+ display:flex;
+ flex-direction:column;
+ gap:16px;
+}
+
+.sidebar nav a{
+ color:#fff;
+ text-decoration:none;
+ display:block;
+ margin:6px 0;
+ font-weight:500;
+}
+
+.sidebar button{
+ padding:10px;
+ border:none;
+ border-radius:8px;
+ background:#22c55e;
+ color:#000;
+ font-weight:600;
+ cursor:pointer;
+}
+
+/* MAIN */
+.main{margin-left:240px}
+
+/* HERO */
+.hero{
+ position:relative;
+ height:70vh;
+}
+.hero iframe{
+ width:100%;
+ height:100%;
+ border:none;
+}
+.hero-text{
+ position:absolute;
+ bottom:30px;
+ left:30px;
+ background:rgba(0,0,0,.5);
+ padding:20px;
+ border-radius:12px;
+}
+
+/* MOVIES */
+.movies{
+ display:grid;
+ grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+ gap:16px;
+ padding:24px;
+}
+.movie{
+ background:#111;
+ border-radius:14px;
+ overflow:hidden;
+}
+.movie iframe{
+ width:100%;
+ height:200px;
+}
+
+/* ABOUT */
+.about{padding:40px}
+
+/* FOOTER */
+footer{
+ padding:24px;
+ text-align:center;
+ background:#111;
+}
+.socials{
+ display:flex;
+ justify-content:center;
+ gap:24px;
+ font-size:26px;
+}
+.socials a{text-decoration:none}
+.socials .fb{color:#1877f2}
+.socials .yt{color:#ff0000}
+.socials .x{color:#fff}
+
+.hidden{display:none}
+
+/* 📱 MOBILE FIX */
+@media (max-width:768px){
+ .menu-btn{display:block}
+
+ .sidebar{
+  transform:translateX(-100%);
+ }
+
+ .sidebar.active{
+  transform:translateX(0);
+ }
+
+ .main{
+  margin-left:0;
+ }
+
+ .hero{
+  height:50vh;
+ }
+
+ .hero-text{
+  left:16px;
+  right:16px;
+ }
+}
+</style>
+
+<script>
+function scrollToSection(id){
+ document.getElementById(id).scrollIntoView({behavior:"smooth"});
+ toggleSidebar(false);
+}
+
+function toggleTheme(){
+ document.body.classList.toggle("light");
+ document.body.classList.toggle("dark");
+}
+
+function toggleVideos(){
+ document.getElementById("movies").classList.toggle("hidden");
+}
+
+function toggleSidebar(force){
+ const sb=document.querySelector(".sidebar");
+ if(force===false){sb.classList.remove("active");return;}
+ sb.classList.toggle("active");
+}
+</script>
+</head>
+
+<body class="dark">
+
+<!-- MAIN LOGO -->
+<div class="logo-area">
+ <img src="image/images.png" alt="Main Logo">
+</div>
+
+<!-- HAMBURGER -->
+<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+<div class="sidebar">
+
+ <div class="sidebar-brand">
+  <img src="image/3.png" alt="Sidebar Logo">
+ </div>
+
+ <div class="sidebar-content">
+  <nav>
+   <a onclick="scrollToSection('hero')">Home</a>
+   <a onclick="scrollToSection('movies')">Movies</a>
+   <a onclick="scrollToSection('about')">About</a>
+  </nav>
+
+  <button onclick="toggleTheme()">🌓 Theme</button>
+  <button onclick="toggleVideos()">👁 Hide Movies</button>
+ </div>
+</div>
+
+<div class="main">
+
+<section class="hero" id="hero">
+ <iframe src="https://www.youtube.com/embed/Q6N1f0UhCbI" allowfullscreen></iframe>
+ <div class="hero-text">
+  <h1>Welcome to Earth Dreams Entertainment</h1>
+  <p>Original African Movies & Creative Media</p>
+ </div>
+</section>
+
+<section class="movies" id="movies">
+ <div class="movie"><iframe src="https://www.youtube.com/embed/vqG2AaGP3Fo" allowfullscreen></iframe></div>
+ <div class="movie"><iframe src="https://www.youtube.com/embed/6CaGKcjB3lM" allowfullscreen></iframe></div>
+ <div class="movie"><iframe src="https://www.youtube.com/embed/Mu1mJ1w9jBQ" allowfullscreen></iframe></div>
+ <div class="movie"><iframe src="https://www.youtube.com/embed/4RexSSex_IA" allowfullscreen></iframe></div>
+ <div class="movie"><iframe src="https://www.youtube.com/embed/0djyXJsQqqY" allowfullscreen></iframe></div>
+ <div class="movie"><iframe src="https://www.youtube.com/embed/7i_uQx8HOFA" allowfullscreen></iframe></div>
+</section>
+
+<section class="about" id="about">
+ <h2>About Earth Dreams Entertainment</h2>
+ <p>Earth Dreams Entertainment is a creative media brand focused on African storytelling, films, and digital content.</p>
+</section>
+
+<footer>
+ <div class="socials">
+  <a class="fb"><i class="fa-brands fa-facebook-f"></i></a>
+  <a class="yt"><i class="fa-brands fa-youtube"></i></a>
+  <a class="x"><i class="fa-brands fa-x-twitter"></i></a>
+ </div>
+ <p>© 2025 Earth Dreams Entertainment</p>
+</footer>
+
+</div>
+</body>
+</html>
